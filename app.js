@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
-app.use('/apir/recipes', require('./routes/recipes.routes'));
+app.use('/api/recipes', require('./routes/recipes.routes'));
 
 const start = async() => {
   try {
