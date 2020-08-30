@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
 import { Recipe } from "../Components/Recipe";
-import { useEffect } from "react";
+
+import { useSelector, useDispatch } from 'react-redux';
+import { setRecipes } from '../../src/store/recipes'
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
 
 export const Recipes = () => {
   const classes = useStyles();
-
-  const [recipes, setRecipes] = useState([]);
+  const dispatch = useDispatch();
+  const recipes = useSelector(state => state.recipes);  
 
   const getData = async () => {
-      const response = await fetch("/api/recipes");
+    const response = await fetch("/api/recipes");
     const recipes = await response.json();
-
+    dispatch(setRecipes(recipes));
     setRecipes(recipes);
   };
 

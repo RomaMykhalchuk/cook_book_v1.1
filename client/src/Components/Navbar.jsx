@@ -31,7 +31,7 @@ export const Navbar = () => {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h3" className={classes.title}>
             Cook Book
           </Typography>
           <Button color="inherit" onClick={goTo}>Create Recipe</Button>
